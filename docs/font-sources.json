@@ -1,0 +1,23 @@
+[
+  {
+    "family": "manrope",
+    "source_css": "https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap",
+    "file_url": "https://fonts.gstatic.com/s/manrope/v20/xn7gYHE41ni1AdIRggexSvfedN4.woff2",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/manrope/OFL.txt",
+    "bytes": 24576
+  },
+  {
+    "family": "barlow-condensed",
+    "source_css": "https://fonts.googleapis.com/css2?family=Barlow%20Condensed:wght@600&display=swap",
+    "file_url": "https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B4873z3bWuYMBYro.woff2",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/barlowcondensed/OFL.txt",
+    "bytes": 14844
+  },
+  {
+    "family": "ibm-plex-mono",
+    "source_css": "https://fonts.googleapis.com/css2?family=IBM%20Plex%20Mono:wght@400&display=swap",
+    "file_url": "https://fonts.gstatic.com/s/ibmplexmono/v20/-F63fjptAgt5VM-kVkqdyU8n1i8q131nj-o.woff2",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/ibmplexmono/OFL.txt",
+    "bytes": 10052
+  }
+]

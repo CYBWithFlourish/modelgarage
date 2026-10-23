@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#181c1d">
+  <meta name="description" content="ModelGarage. Find the models that fit your setup with a local QVAC memory assessment.">
+  <title>ModelGarage | Your local AI workbench</title>
+  <link rel="preload" href="/fonts/barlow-condensed.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/crew.css">
+  <script src="/app.js" type="module"></script>
+  <script src="/crew.js" type="module"></script>
+</head>
+<body>
+  <a class="skip-link" href="#workbench">Skip to model setup</a>
+  <header class="masthead">
+    <a class="brand" href="/" aria-label="ModelGarage home">
+      <svg viewBox="0 0 36 36" class="brand-mark" fill="none" aria-hidden="true"><path d="M5 29V11l13-7 13 7v18M10 29V15h16v14M10 20h16M10 25h16" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      <span>ModelGarage<span class="brand-period">.</span></span>
+    </a>
+    <div class="masthead-right"><span class="local-label"><span class="local-dot" aria-hidden="true"></span>Your local workspace</span><a class="all-apps" href="https://github.com/victorchimakanu/modelgarage" target="_blank" rel="noreferrer">Source <span aria-hidden="true">↗</span></a></div>
+  </header>
+  <main>
+    <div class="intro">
+      <div><p class="eyebrow">Personal compute / Fit check</p><h1>Find the models<br>that fit your setup.</h1></div>
+      <p class="intro-note">Build your own AI lineup.<br>Check its memory needs before<br class="desktop-break"> you make room for it.</p>
+    </div>
+    <div class="workbench" id="workbench">
+      <form id="selection" class="configurator">
+        <div class="panel-heading"><span class="step">01</span><div><p class="eyebrow">The workbench</p><h2>Build your lineup</h2></div></div>
+        <fieldset class="model-choices">
+          <legend class="sr-only">Choose your model combination</legend>
+          <label class="field-label" for="language-model">Language model</label>
+          <select id="language-model" name="languageModel" aria-describedby="model-file-size"><option value="" disabled selected>Getting the model catalog…</option></select>
+          <p class="file-size" id="model-file-size">Catalog file size will appear here.</p>
+          <div class="quick-check"><button type="submit" id="assess" class="primary-button"><span>Check memory fit</span><svg viewBox="0 0 20 20" width="20" height="20" fill="none" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.7"/></svg></button><p class="help action-note">Checks the full lineup below. No weights downloaded.<br>Small registry metadata may be fetched.</p></div>
+          <p class="field-label addons-label">Add a capability <span>Optional</span></p>
+          <label class="model-option"><input type="checkbox" name="embedding"><span class="option-text"><strong>Text search</strong><span>EmbeddingGemma 300M Q4</span></span><span class="option-size" id="embedding-size"></span></label>
+          <label class="model-option"><input type="checkbox" name="speech"><span class="option-text"><strong>Speech recognition</strong><span>Whisper Tiny English Q8</span></span><span class="option-size" id="speech-size"></span></label>
+          <div class="context-row"><div><label class="field-label" for="context">Context window</label><p class="help">How much text it can hold at once.</p></div><div class="number-field"><input type="number" id="context" name="contextTokens" min="512" max="32768" step="1" value="2048" aria-describedby="context-help" required><span>tokens</span></div></div>
+          <p class="help context-help" id="context-help">A token is a small piece of text. More context can use more memory. Choose 512 to 32768.</p>
+          <details class="advanced-settings">
+            <summary>Advanced settings <span class="summary-plus" aria-hidden="true">+</span></summary>
+            <div class="advanced-content">
+              <label class="field-label" for="backend">Backend preference</label>
+              <select id="backend" name="backend"><option value="default">Native default</option><option value="cpu">CPU</option><option value="cuda">NVIDIA CUDA preference</option><option value="metal">Apple Metal preference</option><option value="vulkan">Vulkan preference</option><option value="opencl">OpenCL preference</option></select>
+              <p class="help">A GPU preference can fall back to the native default. Requested and resolved placement may differ. Whisper uses CPU and a 30 second audio window.</p>
+              <label class="field-label" for="execution">How the models will work</label>
+              <select id="execution" name="execution"><option value="sequential">One operation at a time</option><option value="concurrent">Operations at the same time</option></select>
+              <p class="help">Every model stays in memory. One at a time counts the largest working peak; at the same time counts all peaks. This setting estimates memory, it does not schedule tasks.</p>
+            </div>
+          </details>
+        </fieldset>
+        <div class="check-action"><p id="disk-total"></p></div>
+      </form>
+      <div class="report-column">
+        <div class="report-label"><span class="eyebrow">02 / The inspection bay</span><span class="report-label-end">Your machine. Your choice.</span></div>
+        <p id="activity" class="activity" role="status" aria-live="polite"></p>
+        <p id="error" role="alert" hidden></p>
+        <section id="awaiting-result" class="awaiting-result" aria-labelledby="awaiting-title">
+          <div class="awaiting-top"><span class="state-label">Awaiting a check</span><span class="eyebrow">Memory assessment</span></div>
+          <div class="garage-illustration" aria-hidden="true"><svg viewBox="0 0 260 144" fill="none"><path d="M38 125V47l92-32 92 32v78M56 125V58h148v67" stroke="currentColor" stroke-width="1.2"/><path d="M56 69h148M56 80h148M56 91h148M56 102h148M27 125h206M107 125v-12h46v12" stroke="currentColor" stroke-width="1.2"/><path d="M120 39h20" stroke="var(--color-accent)" stroke-width="3"/></svg></div>
+          <div class="awaiting-copy"><h2 id="awaiting-title">A place for your next model.</h2><p>Choose your lineup, then check how it fits<br class="desktop-break"> the memory available on this machine.</p></div>
+          <div class="selected-preview"><p class="eyebrow">Ready for inspection</p><div class="selected-primary"><span id="selected-model-name">Loading catalog</span><span id="selected-model-file" class="measure"></span></div><div id="selected-accessories"></div><p class="preview-caption">Catalog file sizes. Memory is checked separately.</p></div>
+        </section>
+        <section id="results" class="results" aria-labelledby="results-title" hidden>
+          <div class="result-heading"><h2 id="results-title">Your fit report</h2><button id="export" class="text-button" type="button" aria-label="Save fit report as JSON">Save JSON <span aria-hidden="true">↗</span></button></div>
+          <p id="result-time" class="help"></p>
+          <div class="verdict-wrap"><p class="eyebrow">Memory assessment</p><p id="verdict" class="verdict"></p><p id="evidence"></p></div>
+          <div id="budget"></div><ul id="reasons" class="reason-list"></ul><div id="models"></div>
+          <details class="evidence-details"><summary>Assumptions from the SDK</summary><ul id="assumptions"></ul></details>
+          <p id="stale" class="stale" hidden>Settings have changed. Check memory fit again for this lineup.</p>
+        </section>
+        <section id="load-section" class="load-section" aria-labelledby="load-title" hidden>
+          <div class="load-heading"><span class="step">03</span><div><p class="eyebrow">Take it for a test</p><h2 id="load-title">Try an actual load</h2></div><span class="optional-tag">Optional</span></div>
+          <p>Download any missing weights, load this lineup, then release it. Cached files stay on disk. No inference runs.</p>
+          <details class="load-details"><summary>How the safety check works</summary><p>Each model loads with <code>modelFitPolicy: 'refuse'</code>. It blocks a definite failure from a supported fitter. An unknown probe can still load. Free memory can change after an assessment.</p><p>The app reads the engine's fit details, including device memory when available, then releases every model it loaded.</p></details>
+          <label class="load-consent"><input id="confirm-load" type="checkbox"><span>I want to download missing weights and allocate memory for this lineup.</span></label>
+          <div class="load-actions"><button id="load" type="button" disabled>Download and test load</button><button id="cancel" class="secondary-button" type="button" hidden>Cancel load test</button></div>
+          <div id="load-result" aria-live="polite"></div>
+        </section>
+        <details class="read-result"><summary>Reading your result</summary><div><p><strong>Likely fits</strong> is an advisory memory check. It reserves no memory and predicts no speed. <strong>Unknown</strong> means the evidence cannot support a fit claim.</p><p>Disk size describes model files. RAM is the memory a running model needs. A computed floor is a lower bound that omits unmeasured costs.</p><p>Device projections appear only when an explicit load test returns them. Missing fields stay unreported.</p><a href="https://github.com/tetherto/qvac/blob/sdk-v0.22.0/packages/sdk/docs/assess-model-fit.md" target="_blank" rel="noreferrer">Read the QVAC fit guide <span aria-hidden="true">↗</span></a></div></details>
+      </div>
+    </div>
+    <footer><span>Your models belong on your terms.</span><span>Built with QVAC SDK 0.22.0</span></footer>
+  </main>
+</body>
+</html>

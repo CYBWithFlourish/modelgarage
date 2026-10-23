@@ -1,0 +1,450 @@
+{
+  "meta": {
+    "name": "ModelGarage: the personal compute workshop",
+    "description": "A precise, quiet workshop where people choose which models belong on their own machine.",
+    "source_references": [
+      "Original ModelGarage workshop direction with a graphite workbench, lime action and locally served fonts.",
+      "QVAC SDK 0.22.0 model catalog, combined memory assessment and explicit local load test.",
+      "Decorative green workers in hard hats carry model-labelled objects without changing controls or assessment results."
+    ],
+    "created_at": "2026-10-22"
+  },
+  "design_system": {
+    "color": {
+      "palette_type": "analogous neutral graphite with a restrained lime accent",
+      "primary": {
+        "hex": "#edf0e7",
+        "role": "Headings and primary text on graphite"
+      },
+      "secondary": {
+        "hex": "#a7b0a6",
+        "role": "Secondary explanations, labels, and quiet metadata"
+      },
+      "accent": {
+        "hex": "#d0ee82",
+        "role": "Main check action, selected controls, and small brand mark"
+      },
+      "neutral": {
+        "scale": [
+          "#edf0e7",
+          "#d0d6cc",
+          "#a7b0a6",
+          "#788278",
+          "#4b554d",
+          "#38423a",
+          "#2b3330",
+          "#232a27",
+          "#181c1d",
+          "#101513"
+        ],
+        "usage": "Light bone is the foreground. Graphite is the page background, iron panels add depth, and clear neutral borders delineate interactive controls."
+      },
+      "semantic": {
+        "success": "#d0ee82",
+        "warning": "#e7c17b",
+        "error": "#f3a59a",
+        "info": "#a9c9df"
+      },
+      "surface": {
+        "background": "#181c1d",
+        "card": "#232a27",
+        "elevated": "#2b3330"
+      },
+      "contrast_strategy": "Light text on solid dark surfaces. Body text exceeds 4.5:1, large type exceeds 3:1, and every state carries a text label in addition to its color.",
+      "crew_palette": {
+        "usage": "Palette for decorative green characters, workwear, hard hats, goggles, and cargo. Existing product colors and form tokens are unchanged.",
+        "tokens": {
+          "skin": "#a6cf65",
+          "skin-light": "#d0ee82",
+          "skin-shadow": "#668b43",
+          "suit": "#384a3d",
+          "suit-edge": "#648166",
+          "strap": "#27352c",
+          "outline": "#101513",
+          "boot-edge": "#4b554d",
+          "hat": "#d7b15e",
+          "hat-light": "#f5dc8b",
+          "hat-shadow": "#b18a44",
+          "white": "#edf0e7",
+          "goggle": "#a7b0a6",
+          "iris": "#825e35",
+          "shine": "#f4efd2",
+          "tag": "#232a27",
+          "cargo": "#748e82",
+          "cargo-edge": "#a9c9df"
+        },
+        "cargo": {
+          "core": "#a9c9df",
+          "core_edge": "#6d96a0",
+          "capsule": "#8ca96b",
+          "capsule_edge": "#d0ee82",
+          "prism": "#c6ae78",
+          "prism_edge": "#e7c17b",
+          "spool": "#748e82",
+          "spool_edge": "#a9c9df"
+        }
+      }
+    },
+    "typography": {
+      "type_scale": {
+        "display": {
+          "size": "clamp(48px, 4.4vw, 56px)",
+          "weight": 600,
+          "line_height": 0.98,
+          "tracking": "-0.02em"
+        },
+        "heading_1": {
+          "size": "36px",
+          "weight": 600,
+          "line_height": 1.08,
+          "tracking": "-0.01em"
+        },
+        "heading_2": {
+          "size": "28px",
+          "weight": 600,
+          "line_height": 1.15,
+          "tracking": "0em"
+        },
+        "heading_3": {
+          "size": "16px",
+          "weight": 700,
+          "line_height": 1.4,
+          "tracking": "0em"
+        },
+        "body": {
+          "size": "14px",
+          "weight": 450,
+          "line_height": 1.6,
+          "tracking": "0em"
+        },
+        "body_small": {
+          "size": "13px",
+          "weight": 450,
+          "line_height": 1.55,
+          "tracking": "0em"
+        },
+        "caption": {
+          "size": "12px",
+          "weight": 500,
+          "line_height": 1.5,
+          "tracking": "0em"
+        },
+        "overline": {
+          "size": "10px",
+          "weight": 700,
+          "line_height": 1.4,
+          "tracking": "0.12em"
+        }
+      },
+      "font_families": {
+        "heading": "Barlow Condensed",
+        "body": "Manrope",
+        "mono": "IBM Plex Mono"
+      },
+      "font_style_notes": "Condensed semibold display type gives the workshop its identity. Humanist geometric body type keeps controls approachable. Monospace appears only on real measurements and model evidence. All font files are served locally."
+    },
+    "spacing": {
+      "base_unit": "4px",
+      "scale": [
+        "4px",
+        "8px",
+        "12px",
+        "16px",
+        "20px",
+        "24px",
+        "32px",
+        "40px",
+        "48px",
+        "64px"
+      ],
+      "content_density": "Comfortable primary decisions with compact evidence rows",
+      "section_rhythm": "32px from masthead to title, 32px to workbench, 24px within major panels, 8px between label and field"
+    },
+    "layout": {
+      "grid_system": "Two-column asymmetric workbench: 420px configurator and flexible assessment bay. The primary check action appears immediately after the language selector, within the first desktop viewport. A single column at 900px.",
+      "max_content_width": "1280px",
+      "columns": {
+        "desktop": 2,
+        "mobile": 1
+      },
+      "gutter": "24px",
+      "breakpoints": {
+        "mobile": "540px",
+        "tablet": "900px",
+        "desktop": "1280px"
+      },
+      "alignment_tendency": "Strict left aligned grid with a generously separated title and paired configurator/report"
+    },
+    "shape": {
+      "border_radius": {
+        "small": "4px",
+        "medium": "8px",
+        "large": "12px",
+        "pill": "999px"
+      },
+      "border_usage": "Solid 1px iron borders, slightly lighter on controls. A 2px lime focus ring and selected checkbox communicate action.",
+      "divider_style": "Quiet 1px horizontal rules between settings and evidence rows"
+    },
+    "elevation": {
+      "shadow_style": "none",
+      "levels": {
+        "low": "none",
+        "medium": "none",
+        "high": "none"
+      },
+      "depth_cues": "Solid surface color, clear boundaries, and typographic scale"
+    },
+    "iconography": {
+      "style": "Simple geometric open garage mark and small directional arrows; static SVG only",
+      "stroke_weight": "1.5px",
+      "size_scale": [
+        "16px",
+        "20px",
+        "24px",
+        "40px"
+      ],
+      "preferred_set": "Small original inline SVG shapes, no icon dependency"
+    },
+    "motion": {
+      "easing": "cubic-bezier(0.2, 0.7, 0.2, 1)",
+      "duration_scale": {
+        "micro": "120ms",
+        "normal": "180ms",
+        "macro": "240ms"
+      },
+      "entrance_pattern": "Brief opacity reveal for returned evidence",
+      "exit_pattern": "Immediate removal of stale activity",
+      "philosophy": "Original functional UI motion stays unchanged. Decorative workers use long linear travel with held endpoints, brief turns, alternating feet, weighted cargo sway, and occasional blinks. Pause crew and reduced motion hold visible still poses. Hidden and offscreen routes pause."
+    },
+    "components": {
+      "button_style": "Full width lime primary check action immediately after the language selector, acting on every setting in the form below it. Secondary actions use neutral outlines. Disabled controls retain readable labels and no hover movement.",
+      "input_style": "Full width dark solid fields, visible labels, clear iron borders, and 44px minimum targets",
+      "card_style": "A single configurator panel paired with an intentional report bay, not a repeated metric card grid",
+      "navigation_pattern": "Compact masthead with product mark, local workspace status, and one back link to all apps",
+      "modal_style": "No modal. Model download and memory allocation acknowledgment stays inline below a matching result.",
+      "list_style": "Optional model rows with checkbox, capability label, actual file size, and secondary model name. Evidence uses separated rows and native details disclosures.",
+      "component_notes": "Unknown evidence remains explicit. File size, memory budget, and computed floor are separately labelled. Backend and execution preferences live in advanced settings. Export, cancellation, refusal details, assumptions, engine report, and load acknowledgment remain available."
+    }
+  },
+  "design_style": {
+    "aesthetic": {
+      "mood": [
+        "precise",
+        "self-reliant",
+        "grounded",
+        "quietly capable"
+      ],
+      "visual_metaphor": "A clean personal workshop with a configuration bench and an empty inspection bay",
+      "era_influence": "Contemporary industrial product typography and uncluttered equipment labels",
+      "genre": "Personal compute utility",
+      "personality_traits": [
+        "meticulous",
+        "honest",
+        "independent",
+        "practical"
+      ],
+      "adjectives": [
+        "solid",
+        "useful",
+        "spare",
+        "tactile"
+      ]
+    },
+    "visual_language": {
+      "complexity": "Moderate with progressive disclosure",
+      "ornamentation": "Small original garage mark and fine rules, with a decorative crew in measured open spaces. No characters cover inputs, results, or links.",
+      "whitespace_usage": "Wide surrounding margins and generous report bay, tighter repeated settings",
+      "visual_weight_distribution": "Display heading establishes identity, the configuration panel guides choices, and a fit verdict becomes the report focal point",
+      "focal_strategy": "One dominant action before assessment; one clearly labelled verdict after assessment",
+      "contrast_level": "High for reading and controls, subdued for structure",
+      "texture_usage": "None; all surfaces are flat and solid"
+    },
+    "composition": {
+      "hierarchy_method": "Condensed type scale, spatial separation, and selective lime emphasis",
+      "balance_type": "Asymmetric paired workbench",
+      "flow_direction": "Choose on the left, inspect on the right, optionally load below the result",
+      "grouping_strategy": "Capability rows stay with model selection; advanced settings and supporting evidence are disclosed as groups",
+      "negative_space_role": "Keeps technical evidence calm and makes the first assessment feel intentional"
+    },
+    "imagery": {
+      "photo_treatment": "No photography",
+      "illustration_style": "Existing garage line art plus small original green worker characters in hard hats, carrying faceted, sealed model cargo in open spaces.",
+      "graphic_elements": "An original open-bay SVG mark, rules, and unfilled stage labels",
+      "pattern_usage": "None",
+      "image_shape": "Static SVG scaled within its viewBox without cropping"
+    },
+    "interaction_feel": {
+      "feedback_style": "Inline stage text, real transfer progress, clear verdict words, and visible stale-result warning",
+      "hover_behavior": "Controls brighten their border or solid surface; no translation or fake depth",
+      "transition_personality": "Snappy and restrained",
+      "loading_style": "Actual stage text and transfer measurements, with the existing cancellation control when loading",
+      "microinteraction_density": "Low; focus, selected inputs, disclosure state, and result entry only"
+    },
+    "brand_voice_in_ui": {
+      "tone": "Plain, direct, and ownership focused",
+      "formality": "Friendly technical utility",
+      "cta_style": "Direct imperative: Check memory fit, Save result, Download and test load",
+      "empty_state_approach": "Shows the real selected model and explains that the fit report is waiting for a check; never invents hardware or a verdict",
+      "error_tone": "State what failed, keep the last evidence visible, and offer a concrete next action"
+    }
+  },
+  "visual_effects": {
+    "overview": {
+      "effect_intensity": "subtle-accent",
+      "performance_tier": "lightweight",
+      "fallback_strategy": "Characters remain visible in still poses for reduced motion, explicit pause, or missing Web Animations support. Routes outside the viewport and hidden documents pause. No worker intercepts input.",
+      "primary_technology": "SVG, CSS and Web Animations API"
+    },
+    "background_effects": {
+      "type": "none",
+      "description": "Solid graphite background with no animated effect",
+      "technology": "CSS",
+      "params": {
+        "color_palette": [
+          "#181c1d"
+        ],
+        "speed": 0,
+        "density": 0,
+        "opacity": 1,
+        "blend_mode": "normal"
+      }
+    },
+    "particle_systems": {
+      "enabled": false,
+      "type": "none",
+      "description": "No particles",
+      "technology": "none",
+      "params": {
+        "count": 0,
+        "shape": "none",
+        "size_range": [
+          0,
+          0
+        ],
+        "movement_pattern": "none",
+        "color_behavior": "none",
+        "interaction": "none",
+        "spawn_area": "none"
+      }
+    },
+    "3d_elements": {
+      "enabled": false,
+      "type": "none",
+      "description": "No 3D rendering",
+      "technology": "none",
+      "params": {
+        "renderer": "none",
+        "lighting": "none",
+        "camera": "none",
+        "materials": [],
+        "geometry": "none",
+        "post_processing": [],
+        "interaction_model": "none"
+      }
+    },
+    "shader_effects": {
+      "enabled": false,
+      "type": "none",
+      "description": "No shader effects",
+      "technology": "none",
+      "params": {
+        "uniforms": [],
+        "vertex_manipulation": "none",
+        "fragment_output": "none",
+        "noise_type": "none",
+        "distortion": "none"
+      }
+    },
+    "scroll_effects": {
+      "parallax": {
+        "enabled": false,
+        "layers": 0,
+        "depth_range": [
+          0,
+          0
+        ],
+        "speed_curve": "none"
+      },
+      "scroll_triggered_animations": {
+        "enabled": false,
+        "trigger_points": [],
+        "animation_type": "none",
+        "scrub_behavior": "none"
+      },
+      "scroll_morphing": {
+        "enabled": false,
+        "description": "No scroll morphing"
+      }
+    },
+    "text_effects": {
+      "type": "none",
+      "description": "Live readable text without text effects",
+      "technology": "none",
+      "params": {
+        "split_strategy": "none",
+        "animation_per_unit": "none",
+        "stagger": 0,
+        "effect_style": "none"
+      }
+    },
+    "cursor_effects": {
+      "enabled": false,
+      "type": "none",
+      "description": "Native pointer and text cursors",
+      "params": {
+        "shape": "native",
+        "size": "native",
+        "blend_mode": "normal",
+        "trail": false,
+        "interaction_zone": "none"
+      }
+    },
+    "image_effects": {
+      "type": "none",
+      "description": "No image manipulation",
+      "technology": "none",
+      "params": {
+        "filter_pipeline": [],
+        "hover_transform": "none",
+        "reveal_animation": "none",
+        "distortion_type": "none"
+      }
+    },
+    "glassmorphism_neumorphism": {
+      "enabled": false,
+      "style": "none",
+      "params": {
+        "blur_radius": "0px",
+        "transparency": 0,
+        "border_treatment": "Solid 1px borders",
+        "shadow_type": "none",
+        "light_source_angle": 0
+      }
+    },
+    "canvas_drawings": {
+      "enabled": false,
+      "type": "none",
+      "description": "No canvas",
+      "technology": "none",
+      "params": {
+        "draw_method": "none",
+        "animation_loop": false,
+        "color_scheme": "none",
+        "responsiveness": "Static SVG and CSS layout only",
+        "interaction": "none"
+      }
+    },
+    "svg_animations": {
+      "enabled": true,
+      "type": "ambient-worker-choreography",
+      "description": "Small green minion-like workers with hard hats, goggles, workwear, alternating feet, blinking eyes, and mysteriously shaped cargo tagged Qwen3, EmbeddingGemma, or Whisper. Route geometry follows actual open areas around the existing interface.",
+      "params": {
+        "animation_method": "Web Animations for travel and turns; CSS transforms for gait, cargo sway, hat follow-through and eye blinks. ResizeObserver updates geometry; IntersectionObserver pauses offscreen routes.",
+        "path_morphing": false,
+        "stroke_animation": false,
+        "filter_effects": []
+      }
+    },
+    "composite_notes": "Crew is decorative and independent of model activity. It never implies a model is loading, selected, downloaded, or proven to fit. No canvas, raster assets, remote service, animation library, or continuous JavaScript frame loop is needed. Main app logic, native fit service, original styles, layout and data controls stay unchanged."
+  }
+}
