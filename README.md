@@ -4,7 +4,7 @@
 
 Build a local AI lineup, inspect its memory needs, and decide what belongs on your machine before downloading model weights. ModelGarage uses the real combined model assessment in **QVAC SDK 0.22.0**.
 
-![ModelGarage walkthrough](docs/walkthrough.gif)
+![ModelGarage walkthrough](https://raw.githubusercontent.com/victorchimakanu/modelgarage/e41af03/docs/walkthrough.gif)
 
 [Open the animation](docs/walkthrough.gif) · [View a still preview](docs/preview.png)
 
